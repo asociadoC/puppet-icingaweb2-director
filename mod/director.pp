@@ -13,7 +13,7 @@ class icingaweb2::mod::director (
   $transport_host        = $fqdn,
   $transport_port        = '5665',
   $director_api_user 	 = "director",
-  $director_api_password = "sdusd78762z1hjnassiaod8s9" 
+  $director_api_password = "XXXXXXXXXX" 
 ) {
   require ::icingaweb2
 
