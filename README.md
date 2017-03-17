@@ -12,21 +12,25 @@ Most requirements will be fulfilled by the other modules that you used already w
 
 1. have icinga2 api enabled, otherwise kickstart will not succeed
 
-in some manifest that wraps your icinga2 server : 
+in some manifest that wraps your icinga2 server :
 
+```
   class { '::icinga2::feature::api':
     accept_commands => true,
   }
+```
 
 the api user which is required to kickstart director will created automatically. You should just change username & password if you want to 
 
 2. then, in your icingaweb2 manifest, just use the new module you dropped into (example) /etc/puppetlabs/code/environments/production/modules/icingaweb2/manifests/mod/ :
 
+```
   class { '::icingaweb2::mod::director':
     director_db_name => 'icinga2director',
     director_db_user => 'icinga2director',
     director_db_pass => 'XXXXXXXXX',
     director_db_host => 'localhost'
-  } ->
+  } 
+``` 
 
-
+To fill your icinga2 installation with some sense you will want to install icingacli in some puppet manifest, ensure that this installation is done AFTER this dropin, or the vcsrepo thing will fail !
